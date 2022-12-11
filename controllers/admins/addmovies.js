@@ -3,7 +3,7 @@ const Movie = require('../../models/Movie');
 const { uploadFile } = require("../../utils/s3");
 const fs = require('fs')
 const util = require('util')
-const unlinkFile = util.promisify(fs.unlink)
+// const unlinkFile = util.promisify(fs.unlink)
 
 
 const addmovie = asyncHandler(async(req,res)=>{
