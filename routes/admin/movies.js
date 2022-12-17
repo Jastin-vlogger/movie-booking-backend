@@ -3,8 +3,11 @@ var router = express.Router();
 const {
   addmovie,
   addMovieInfo,
+  adminLogin,
 } = require("../../controllers/admins/addmovies");
-// const { memoryStorage } = require("multer");
+
+const {verifyAdminToken} = require('../../middleware/adminAuth')
+
 
 const multer = require("multer");
 
@@ -22,8 +25,12 @@ const upload = multer({
 });
 
 /* GET users listing. */
+router.get('/',verifyAdminToken)
+
 router.post("/movieImage/upload/:id", upload.single("image"), addmovie);
 
 router.post("/movieinfo", addMovieInfo);
+
+router.post('/login',adminLogin)
 
 module.exports = router;

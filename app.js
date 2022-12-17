@@ -14,6 +14,7 @@ const {connect} = require('./dbConnection/connect')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const adminRouter = require('./routes/admin/movies')
+const theaterRouter = require ('./routes/theaters/register')
 
 var app = express();
 connect();
@@ -43,6 +44,7 @@ app.use(
 app.use('/auth',authRouter)
 app.use('/api/users',usersRouter);
 app.use('/api/admin',adminRouter);
+app.use('/api/theater',theaterRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

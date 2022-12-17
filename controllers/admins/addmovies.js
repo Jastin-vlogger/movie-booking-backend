@@ -4,6 +4,8 @@ const { uploadFile } = require("../../utils/s3");
 const fs = require('fs')
 const util = require('util')
 // const unlinkFile = util.promisify(fs.unlink)
+const AdminModel = require('../../models/admin')
+const {generateAdminToken} = require('../../utils/generatetoken')
 
 
 const addmovie = asyncHandler(async(req,res)=>{
@@ -36,8 +38,36 @@ const addMovieInfo = asyncHandler(async(req,res)=>{
 })
 
 
+const adminLogin = asyncHandler(async (req, res) => {
+    try {
+      const { email, password } = req.body;
+      console.log(email, password);
+      const Admin = await AdminModel.findOne({ email: email });
+      if (!Admin) {
+        res.json("Admin not found");
+      } else {
+        if (Admin.password !== password) {
+          res.json("Please check your password");
+        } else {
+          let id = Admin._id;
+          let tokenGenereted = await generateAdminToken(id);
+          res.cookie("adminToken", tokenGenereted).json({
+            id: Admin._id,
+            email: Admin.email,
+            token: tokenGenereted,
+          });
+        }
+      }
+    } catch (error) {
+      console.log(error);
+      res.status(error?.status).json(error.message);
+    }
+  });
+
+
 
 module.exports = {
     addmovie,
-    addMovieInfo
+    addMovieInfo,
+    adminLogin
 }
