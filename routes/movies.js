@@ -4,9 +4,9 @@ const {
   addmovie,
   addMovieInfo,
   adminLogin,
-} = require("../../controllers/admins/addmovies");
+} = require("../controllers/admins/addmovies");
 
-const {verifyAdminToken} = require('../../middleware/adminAuth')
+const {verifyAdminToken} = require('../middleware/adminAuth')
 
 
 const multer = require("multer");

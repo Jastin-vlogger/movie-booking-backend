@@ -1,46 +1,49 @@
+let now = new Date();
+let ne = new Date();
+let nale = new Date();
+let nalathekazhinju = new Date();
+let date = [now, ne, nale, nalathekazhinju];
+let row = 10;
+let Numbers = 10;
 
-
-// let a = new Date()
-// console.log(new Date())
-
-// let num = new Array(10000000)
-
-// let numbers = Array.from(num, (_, i) => i + 1);
-
-// // const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue);
-// let sum = 0
-// for (let i = 0; i < numbers.length; i++) {
-//     sum = sum+numbers[i]
-// }
-// console.log(sum); // 15
-// let b = new Date()
-// console.log(b-a)
-
-
-// let count = 0;
-
-// function logMessage() {
-//   console.log(`This message has been logged ${count} times.`);
-//   count++;
-//     console.log('hello');
-//   setTimeout(logMessage, 1000);
-// }
-
-// logMessage();
-
-let count = 0;
-
-function logMessages() {
-  for (let i = 0; i < 100; i++) {
-      setTimeout(()=>{
-        console.log('prijith ser')
-      }, 500);
-      console.log(`This is message number ${i}.`);
+let seating = [];
+let seats = [];
+for (let i = 0; i < date.length; i++) {
+  let time = date[i]
+  for (let i = 0; i < row; i++) {
+    let arr = [];
+    let id = String.fromCharCode(i + 65)
+    for (let j = 0; j < Numbers; j++) {
+      arr.push({index:`${id}${j+1}`,isReserved: false, user: "" });
+    }
+    seats.push(arr);
   }
-
-  count++;
+  seating.push({time,seats})
 }
+console.log(seating);
 
-logMessages();
 
-
+db.pushNewItemsDemo.insertOne(
+  {
+     "_id" :1,
+     "StudentScore" : 56,
+     "StudentOtherDetails" : [
+        {
+           "StudentName" : "John",
+           "StudentFriendName" : [
+              "Bob",
+              "Carol"
+           ]
+        },
+        {
+           "StudentName" : "David",
+           "StudentFriendName" : [
+              "Mike",
+              "Sam"
+           ]      
+        }
+     ]
+  }
+);
+db.pushNewItemsDemo.update({"_id":1,"Screen":{"$elemMatch":{"screenName":"David"}}},
+   {"$push":{"Screen.$.screenName":"James"}});

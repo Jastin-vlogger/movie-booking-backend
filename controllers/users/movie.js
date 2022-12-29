@@ -16,7 +16,7 @@ const getImages = asyncHandler(async(req, res) => {
 
 const getMovieInformation = asyncHandler(async(req,res)=>{
     try {
-       const movie = await Movie.find()
+       const movie = await Movie.find({}).sort({_id:-1})
     //    console.log(movie)
        res.status(200).json(movie)
     } catch (error) {

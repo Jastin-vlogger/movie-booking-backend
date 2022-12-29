@@ -35,6 +35,9 @@ const theaterSchema = new mongoose.Schema({
     isApproved:{
         type:Boolean,
         default:false,
+    },
+    Screen:{
+        type:Array,
     }
 })
 

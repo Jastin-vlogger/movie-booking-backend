@@ -11,10 +11,9 @@ const cookieSession = require("cookie-session");
 
 
 const {connect} = require('./dbConnection/connect')
-var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-const adminRouter = require('./routes/admin/movies')
-const theaterRouter = require ('./routes/theaters/register')
+const adminRouter = require('./routes/movies')
+const theaterRouter = require ('./routes/theater')
 
 var app = express();
 connect();
@@ -36,7 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(
   cors({
     origin: "http://localhost:3000",
-    methods: "*",
+    methods: ['GET','POST','PUT','PATCH','DELETE'],
     credentials: true,
   })
 );
