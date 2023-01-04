@@ -1,49 +1,27 @@
-let now = new Date();
-let ne = new Date();
-let nale = new Date();
-let nalathekazhinju = new Date();
-let date = [now, ne, nale, nalathekazhinju];
-let row = 10;
-let Numbers = 10;
-
-let seating = [];
-let seats = [];
-for (let i = 0; i < date.length; i++) {
-  let time = date[i]
-  for (let i = 0; i < row; i++) {
-    let arr = [];
-    let id = String.fromCharCode(i + 65)
-    for (let j = 0; j < Numbers; j++) {
-      arr.push({index:`${id}${j+1}`,isReserved: false, user: "" });
-    }
-    seats.push(arr);
-  }
-  seating.push({time,seats})
-}
-console.log(seating);
-
-
-db.pushNewItemsDemo.insertOne(
-  {
-     "_id" :1,
-     "StudentScore" : 56,
-     "StudentOtherDetails" : [
+let data = [
+    {
+      screenName: "S5",
+      row: "10",
+      Numbers: "10",
+      showInfo: [
         {
-           "StudentName" : "John",
-           "StudentFriendName" : [
-              "Bob",
-              "Carol"
-           ]
+          WeeklyDays: "MTWTFSS",
+          movieName: "63a187bb9f022bce46ca3be6",
+          price: "120",
+          status: "open",
+          screen: "S5",
+          id: "63abc67591f6a0515e9eb7c5",
+          dateData: [
+            "1/January/2023 1-1",
+            "2/January/2023 2-2",
+            "3/January/2023 3-3",
+          ],
         },
-        {
-           "StudentName" : "David",
-           "StudentFriendName" : [
-              "Mike",
-              "Sam"
-           ]      
-        }
-     ]
-  }
-);
-db.pushNewItemsDemo.update({"_id":1,"Screen":{"$elemMatch":{"screenName":"David"}}},
-   {"$push":{"Screen.$.screenName":"James"}});
+      ],
+    },
+    { screenName: "S1", row: "5", Numbers: "8" },
+  ]
+
+  let arr = [] 
+
+  

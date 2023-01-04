@@ -33,4 +33,6 @@ router.post("/movieinfo", addMovieInfo);
 
 router.post('/login',adminLogin)
 
+
+
 module.exports = router;

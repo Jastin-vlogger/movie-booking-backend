@@ -46,9 +46,7 @@ const signup = asyncHandler(async(req, res) => {
         .then(async (response) => {
           console.log(response);
           let token = await generateToken(response._id);
-          res.cookie("userToken", token).json({
-            status: true,
-          });
+          res.cookie("userToken", token).json(response.phone);
         });
     }
   } catch (error) {

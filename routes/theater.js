@@ -8,7 +8,8 @@ const {
   addScreen,
   getTheaterScreen,
   screenInfo,
-  addShow
+  addShow,
+  getShowsInformation
 } = require("../controllers/theaterowners/register");
 
 /* GET users listing. */
@@ -27,6 +28,8 @@ router.get('/getScreen/:id',getTheaterScreen)
 router.get('/screenInfo/:id',screenInfo)
 
 router.post('/addShow',addShow)
+
+router.get('/getScreenInfo/:date/:day/:id',getShowsInformation)
 
 
 module.exports = router;
