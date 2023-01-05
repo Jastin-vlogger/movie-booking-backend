@@ -243,35 +243,24 @@ const getShowsInformation = asyncHandler(async (req, res) => {
     console.log(date, day, id);
     const data = await Theater.find(
       { "Screen.showInfo.movieName": id },
-      { "Screen.showInfo.dateData": 1, theater: 1 }
+      { "Screen.showInfo.$": 1, theater: 1 }
     );
-    // const datas = await Theater.aggregate([
-    //   {
-    //     '$match': {
-    //       'Screen.showInfo.movieName': id
-    //     }
-    //   }, {
-    //     '$unwind': {
-    //       'path': '$Screen'
-    //     }
-    //   }, {
-    //     '$project': {
-    //       'specifications': {
-    //         'theater': '$theater',
-    //         'screen': '$Screen'
-    //       }
-    //     }
-    //   }
-    // ])
-    console.log(data)
-    let gotDate =[];
-    
+    console.log(data);
+    let gotDate = [];
     for (let i = 0; i < data.length; i++) {
       // gotDate.push(data[i].theater)
-       gotDate.push({theaterName: data[i].theater,date:data[i].Screen[0].showInfo[0].dateData}) 
+      const start = new Date(data[i].Screen[0].showInfo[0].startDate);
+      const end = new Date(data[i].Screen[0].showInfo[0].endDate);
+      console.log(start.getDate(),end.getDate())
+      if (date >= start.getDate() && date <= end.getDate()) {
+        gotDate.push({
+          theaterName: data[i].theater,
+          data: data[i].Screen[0].showInfo[0],
+        });
+      }
     }
-    console.log(gotDate)
-    res.json(gotDate); 
+    console.log(gotDate);
+    res.json(gotDate);
   } catch (error) {
     console.log(error);
   }
