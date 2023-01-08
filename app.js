@@ -11,9 +11,10 @@ const cookieSession = require("cookie-session");
 
 
 const {connect} = require('./dbConnection/connect')
-var usersRouter = require('./routes/users');
+const usersRouter = require('./routes/users');
 const adminRouter = require('./routes/movies')
 const theaterRouter = require ('./routes/theater')
+const reservation = require('./routes/reservation')
 
 var app = express();
 connect();
@@ -44,6 +45,7 @@ app.use('/auth',authRouter)
 app.use('/api/users',usersRouter);
 app.use('/api/admin',adminRouter);
 app.use('/api/theater',theaterRouter)
+app.use('/api/user',reservation)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

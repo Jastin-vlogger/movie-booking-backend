@@ -243,9 +243,9 @@ const getShowsInformation = asyncHandler(async (req, res) => {
     console.log(date, day, id);
     const data = await Theater.find(
       { "Screen.showInfo.movieName": id },
-      { "Screen.showInfo.$": 1, theater: 1 }
+      { "Screen.$": 1, theater: 1 }
     );
-    console.log(data);
+    console.log(data[0].Screen);
     let gotDate = [];
     for (let i = 0; i < data.length; i++) {
       // gotDate.push(data[i].theater)
@@ -254,7 +254,10 @@ const getShowsInformation = asyncHandler(async (req, res) => {
       console.log(start.getDate(),end.getDate())
       if (date >= start.getDate() && date <= end.getDate()) {
         gotDate.push({
+          
           theaterName: data[i].theater,
+          
+          screenName: data[i].Screen[0].screenName,
           data: data[i].Screen[0].showInfo[0],
         });
       }
