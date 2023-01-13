@@ -240,7 +240,7 @@ const getShowsInformation = asyncHandler(async (req, res) => {
     const date = req.params.date;
     const day = req.params.day;
     const id = req.params.id;
-    console.log(date, day, id);
+    console.log(date, day, id +"IM HERERERE");
     const data = await Theater.find(
       { "Screen.showInfo.movieName": id },
       { "Screen.$": 1, theater: 1 }

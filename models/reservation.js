@@ -45,6 +45,9 @@ const reservationSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  paymentId: {
+    type: String,
+  },
 });
 
 const Reservation = mongoose.model('Reservation', reservationSchema);

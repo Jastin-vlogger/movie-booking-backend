@@ -10,7 +10,7 @@ const connect = async () => {
         useUnifiedTopology: true,
       },
       (err) => {
-        if (!err) console.log("connected");
+        if (!err) console.log(" database connected");
         else console.log(err);
       }
     );

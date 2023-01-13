@@ -1,4 +1,5 @@
 const express = require("express");
+const { getAdmin,getTheater } = require("../controllers/theaterowners/messageController");
 const router = express.Router();
 const {
   register,
@@ -30,6 +31,10 @@ router.get('/screenInfo/:id',screenInfo)
 router.post('/addShow',addShow)
 
 router.get('/getScreenInfo/:date/:day/:id',getShowsInformation)
+
+router.get("/allAdminStaff",getAdmin);
+
+router.get("/allTheater",getTheater);
 
 
 module.exports = router;

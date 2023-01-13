@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon app.js"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.226.0",
@@ -26,6 +26,8 @@
     "passport": "^0.5.3",
     "passport-google-oauth20": "^2.0.0",
     "qrcode": "^1.5.1",
+    "socket.io": "^4.5.4",
+    "stripe": "^11.6.0",
     "uuid": "^9.0.0"
   },
   "main": "app.js",
