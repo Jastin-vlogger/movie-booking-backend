@@ -28,6 +28,9 @@ const movieSchema = new mongoose.Schema(
     Review:{
         type:Array,  
     },
+    Language:{
+      type:Array,
+    }
 
   },
   {

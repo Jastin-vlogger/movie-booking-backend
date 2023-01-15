@@ -1,12 +1,13 @@
 const router = require("express").Router();
 const passport = require("passport");
+const jwt = require("jsonwebtoken");
 
 const CLIENT_URL = "http://localhost:3000/";
 
 router.get("/login/success", (req, res) => {
   try {
     if (req.user) {
-      // console.log(req.user);
+      console.log(req.user)
       res.status(200).json({
         success: true,
         message: "successfull",
@@ -15,7 +16,7 @@ router.get("/login/success", (req, res) => {
       });
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 });
 
@@ -31,7 +32,10 @@ router.get("/logout", (req, res) => {
   res.redirect(CLIENT_URL);
 });
 
-router.get("/google", passport.authenticate("google", { scope: ["profile,email"] }));
+router.get(
+  "/google",
+  passport.authenticate("google", { scope: ["profile", "email"] })
+);
 
 router.get(
   "/google/callback",

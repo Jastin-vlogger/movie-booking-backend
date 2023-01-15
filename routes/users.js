@@ -1,22 +1,34 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-const {signup} = require('../controllers/users/signup')
-const {getImages,getMovieInformation,movieInformation,addReview,getMovieReviewById}= require('../controllers/users/movie')
+const { signup ,otp } = require("../controllers/users/signup");
+const {
+  getImages,
+  getMovieInformation,
+  movieInformation,
+  addReview,
+  getMovieReviewById,
+  GetTheaterMovies,
+} = require("../controllers/users/movie");
+const { nodmail } = require("../utils/nodemailer");
 
 /* GET users listing. */
-router.post('/signup',signup);
 
-router.get('/images/:key' ,getImages)
+router.post("/signup", signup);
 
-router.get('/movieInfo' ,getMovieInformation)
+router.post("/otp", otp);
 
-router.get('/movieInfo/:id' ,movieInformation)
+router.get("/images/:key", getImages);
 
-router.post('/addreviews',addReview)
+router.get("/movieInfo", getMovieInformation);
 
-router.get('/movieReview/:id',getMovieReviewById)
+router.get("/movieInfo/:id", movieInformation);
 
+router.post("/addreviews", addReview);
 
+router.get("/movieReview/:id", getMovieReviewById);
 
+router.get("/nodemailer", nodmail);
+
+router.get("/GetTheaterMovies", GetTheaterMovies);
 
 module.exports = router;
