@@ -20,6 +20,7 @@ const reservation = asyncHandler(async (req, res) => {
     const qrcode = await generateQR(
       "http//:localhost:3000/reservation/" + data.id
     );
+    await Reservation.findByIdAndUpdate(data.id,{$set:{qrcode:qrcode}})
     res.json({ status: "payment successfull", data, qrcode });
   } catch (error) {
     console.log(error);

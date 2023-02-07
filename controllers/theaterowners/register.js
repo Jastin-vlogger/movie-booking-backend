@@ -238,7 +238,7 @@ const addShow = asyncHandler(async (req, res) => {
 const getShowsInformation = asyncHandler(async (req, res) => {
   try {
     const date = req.params.date;
-    const day = req.params.day;
+    const day = req.params.day; 
     const id = req.params.id;
     console.log(date, day, id +"IM HERERERE");
     const data = await Theater.find(

@@ -1,62 +1,31 @@
-// const binarySearch = (arry, target) => {
-//   console.log("heh");
-//   let start = 0;
-//   let end = arry.length - 1;
-//   while (start <= end) {
-//     let middle = Math.floor(start + end / 2);
-//     if (target <= arry[middle]) {
-//       return console.log(middle + "got at first middle");
+// function reverseArray(arr){
+//     let temp = 0
+//     let hi = arr.length
+//     for(i=0;i<hi/2;i++){
+//         temp = arr[i];
+//         arr[i]=arr[hi-i-1];
+//         arr[hi-i-1] = temp;
 //     }
-//     if (target > arry[middle]) {
-//       console.log("Searching the right side of Array");
-//       start = middle + 1;
+//     console.log(arr)
+// }
+function reverseArray(arr){
+    const array = [];
+        for (let j = 0; j < arr.length; j++) {
+            array[j+arr.length] =arr[j]
+        }
+    return array
+}
+
+// function reverseArray(arr){
+//     let temp = 0
+//     let j=arr.lenght-1
+//     for(i=0;i<=arr.lenght/2;i++){
+//         temp = arr[i];
+//         arr[i]=arr[j];
+//         arr[j] = temp;
+//         j--
 //     }
-//     if (target < arry[middle]) {
-//       console.log("Searching the left side of Array");
-
-//       end = middle - 1;
-//     }
-//     return -1;
-//   }
-//   console.log("Target value not found in array");
-// };
-
-// binarySearch([1, 2, 3, 4, 5, 6, 7, 8, 9], 11);
-
-// const process = (callback)=>{
-//   const result = "procees data";
-//   callback(result)
+//     console.log(arr)
 // }
 
-// const handleCallback = (result)=>{
-//   console.log(result)
-// }
-
-// process(handleCallback)
-
-// const sum = (callback , a,b) =>{
-//   const result = a + b;
-//   callback(result)
-// }
-
-// const multiply = (result)=>{
-//   console.log(result * 8);
-// }
-
-// sum(multiply,5,6)
-
-// const addition = (a, b) => {
-//   return new Promise((resolve, reject) => {
-//     const result = a + b;
-//     resolve(result);
-//   });
-// };
-
-// addition(5, 6).then((response) => {
-//   return new Promise((resolve, reject) => {
-//     const result = response * 6;
-//     resolve(result)
-//   }).then((response)=>{
-//     console.log(response)
-//   });
-// });
+console.log(reverseArray([1,2,3]))

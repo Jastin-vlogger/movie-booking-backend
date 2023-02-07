@@ -48,6 +48,9 @@ const reservationSchema = new Schema({
   paymentId: {
     type: String,
   },
+  qrcode: {
+    type: String,
+  },
 });
 
 const Reservation = mongoose.model('Reservation', reservationSchema);

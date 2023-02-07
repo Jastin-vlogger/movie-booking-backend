@@ -98,6 +98,19 @@ const GetTheaterMovies = asyncHandler(async (req, res) => {
     console.log(error);
   }
 });
+
+const search = asyncHandler(async (req, res) => {
+  try {
+    const payload = req.params.query;
+    let search = await Movie.find({
+      title: { $regex: new RegExp("^" + payload + ".*", "i") },
+    }).exec();
+    search = search.slice(0,10)
+    res.json(search);
+  } catch (error) {
+    console.log(error);
+  }
+});
 module.exports = {
   getImages,
   getMovieInformation,
@@ -105,4 +118,5 @@ module.exports = {
   addReview,
   getMovieReviewById,
   GetTheaterMovies,
+  search,
 };

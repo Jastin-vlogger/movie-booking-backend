@@ -30,6 +30,9 @@ const movieSchema = new mongoose.Schema(
     },
     Language:{
       type:Array,
+    },
+    posterImage:{
+      type:String,
     }
 
   },
